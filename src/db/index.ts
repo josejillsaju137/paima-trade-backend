@@ -4,9 +4,11 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
+const connectionString = process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
+
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: process.env.DATABASE_URL?.includes('neon.tech') ? { rejectUnauthorized: false } : false,
+    connectionString,
+    ssl: connectionString?.includes('neon.tech') ? { rejectUnauthorized: false } : false,
 });
 
 /**
