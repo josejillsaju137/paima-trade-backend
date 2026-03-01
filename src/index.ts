@@ -2,13 +2,9 @@ import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import path from 'path';
 import { initDb, query } from './db';
 import { startPriceCron } from './cron/priceCron';
-
-// Load environment variables (fallback for local dev)
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;

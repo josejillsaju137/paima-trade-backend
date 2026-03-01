@@ -1,8 +1,4 @@
 import { Pool } from 'pg';
-import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config();
 
 const connectionString = process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
 
