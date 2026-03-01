@@ -7,8 +7,8 @@ import path from 'path';
 import { initDb, query } from './db';
 import { startPriceCron } from './cron/priceCron';
 
-// Load environment variables
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+// Load environment variables (fallback for local dev)
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
