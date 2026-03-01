@@ -1,15 +1,15 @@
 import { Pool } from 'pg';
 
-const connectionString = process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
+const connectionString = process.env.NEON_NEON_DATABASE_URL || process.env.NEON_DATABASE_URL;
 
 console.log('[DB Init] Checking Environment Variables:');
+console.log(`- NEON_NEON_DATABASE_URL defined: ${!!process.env.NEON_NEON_DATABASE_URL}`);
 console.log(`- NEON_DATABASE_URL defined: ${!!process.env.NEON_DATABASE_URL}`);
-console.log(`- DATABASE_URL defined: ${!!process.env.DATABASE_URL}`);
 console.log(`- Target connection string length: ${connectionString?.length || 0}`);
 
 if (!connectionString) {
   console.error('CRITICAL ERROR: No database connection string found in environment variables!');
-  console.error('Please ensure NEON_DATABASE_URL or DATABASE_URL is set in your Railway variables.');
+  console.error('Please ensure NEON_NEON_DATABASE_URL or NEON_DATABASE_URL is set in your Railway variables.');
 }
 
 const pool = new Pool({

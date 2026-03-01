@@ -9,4 +9,4 @@ services:
         value: 3001
       - key: NODE_ENV
         value: production
-      # REMINDER: Don't forget to add your NEON_DATABASE_URL and CORS_ORIGIN to the Render dashboard!
+      # REMINDER: Don't forget to add your NEON_NEON_DATABASE_URL and CORS_ORIGIN to the Render dashboard!
