@@ -9,10 +9,19 @@ import { startPriceCron } from './cron/priceCron';
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Ensure we accept both the production URL and local development URLs
+const allowedOrigins = [
+    process.env.CORS_ORIGIN, // e.g. https://paima-trade-app.vercel.app
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://paima-trade-app.vercel.app' // Hardcoded backup just in case
+].filter(Boolean) as string[];
+
 // Middlewares
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-    methods: ['GET', 'POST']
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
 }));
 app.use(express.json());
 
@@ -20,8 +29,9 @@ app.use(express.json());
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-        methods: ['GET', 'POST']
+        origin: allowedOrigins,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        credentials: true,
     }
 });
 
