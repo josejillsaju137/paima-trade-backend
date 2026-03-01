@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "prestart": "node -e \"console.log('[DEBUG] Env Keys:', Object.keys(process.env).filter(k => k.includes('URL') || k.includes('DB') || k.includes('NEON')))\"",
     "start": "node dist/index.js",
     "dev": "nodemon dev.ts",
     "build": "tsc",
